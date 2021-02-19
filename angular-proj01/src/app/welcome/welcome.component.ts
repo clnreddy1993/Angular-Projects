@@ -14,16 +14,16 @@ export class WelcomeComponent  {
   
   constructor() {
     this.message = "this is the first component";
-    this.logos=["src/assets/images/n1.jpg", "src/assets/images/n2.jpg"];
+    this.logos=["assets/images/n1.jpg", "assets/images/n2.png"];
     this.logo= this.logos[0];
     this.imgWidth=150;
    }
 
    onImageDoubleClick(){
       if(this.logo === this.logos[0]){
-        this.logo === this.logos[1];
+        this.logo = this.logos[1];
       }else{
-        this.logo === this.logos[0];
+        this.logo = this.logos[0];
       }
    }
 

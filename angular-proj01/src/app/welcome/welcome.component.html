@@ -3,13 +3,16 @@
 <section>
     <h2>{{message}}</h2>
 
-    <!-- <div> 
-		<img [src]="logo" /> 
-	</div>  -->
+  
 
     <form>
-        <input type="text" name="t1" [(ngModel)] = "message">
+        <input type="text" name="t1" [(ngModel)] = "message"/>
+        <input type="range" name="r1" [(ngModel)] = "imgWidth" min="50" max="500">
     </form>
 
-    <div><img [src]="logo" (dblclick)="onImageDoubleClick()"/></div>
+    <!-- <div><img [src]="logo" [width]="imgWidth" (dblclick)="onImageDoubleClick()" /></div> -->
+    <img [src]="logo" 
+        class = "bordered roundCorner pull-center"
+        [style.width.pt]="imgWidth" (dblclick)="onImageDoubleClick()" />
+
 </section>

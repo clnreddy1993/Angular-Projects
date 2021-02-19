@@ -1,0 +1,16 @@
+section{
+    background-color: #aaaaaa;
+    padding: 2px;
+}
+.bodered{
+    border: 2px solid black;
+}
+
+.roundCorner{   
+    border-radius: 10px;
+}
+
+.pull-center{
+    display: block;
+    margin: 0px auto;
+}

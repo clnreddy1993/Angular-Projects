@@ -12,29 +12,39 @@
 
    <p>
     
-    Original:<strong>{{num}}</strong>
-    <strong>{{num}}</strong>
-    <strong>{{num}}</strong>
-    <strong>{{num}}</strong>
+    Original:<strong>{{num}}</strong><br/>
+    <strong>{{num |number : '1.3-6'}}</strong><br/>
+    <strong>{{num |number : '1.0-0'}}</strong><br/>
+    <strong>{{num |number : '5.0-0'}}</strong>
 
     </p>
 
     <p>
     
-        Original:<strong>{{today}}</strong>
-        <strong>{{today|date:'short'}}</strong>
-        <strong>{{today|date:'long'}}</strong>
-        <strong>{{today}}</strong>
+        Original:<strong>{{today}}</strong> <br/>
+        <strong>{{today|date:'short'}}</strong> <br/>
+        <strong>{{today|date:'long'}}</strong> <br/>
+        <strong>{{today|date:'dd-MM-yyyy'}}</strong> <br/>
+        <strong>{{today|date:'dd-MMM-yyyy'}}</strong> <br/>
+        <strong>{{today|date:'dd-MMM-yyyy hh:mm:ss a'}}</strong> <br/>
+        <strong>{{today|date:'dd-MM-yyyy HH:mm:ss'}}</strong> <br/>
+        
     
     </p>
 
     <p>
-    
-        Original:<strong>{{emp}}</strong>
-        Original:<strong>{{emp|json}}</strong>
-       
-    
+        Original:<strong>{{emp}}</strong> <br/>
+        Original:<strong>{{emp|json}}</strong>   
     </p>
+
+    <p>
+        Original:<strong>{{num}}</strong>
+        Original:<strong>{{num|currency : 'INR'}}</strong>  <br/>
+        Original:<strong>{{num|currency : 'USD'}}</strong>  <br/>
+        Original:<strong>{{num|currency : 'AUD'}}</strong>  <br/>
+        Original:<strong>{{num|currency : 'GBP'}}</strong>   
+    </p>
+    
 
 </section>
 
