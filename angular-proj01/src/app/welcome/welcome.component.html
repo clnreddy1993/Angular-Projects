@@ -1,0 +1,15 @@
+<p>welcome works!</p>
+
+<section>
+    <h2>{{message}}</h2>
+
+    <!-- <div> 
+		<img [src]="logo" /> 
+	</div>  -->
+
+    <form>
+        <input type="text" name="t1" [(ngModel)] = "message">
+    </form>
+
+    <div><img [src]="logo" (dblclick)="onImageDoubleClick()"/></div>
+</section>
