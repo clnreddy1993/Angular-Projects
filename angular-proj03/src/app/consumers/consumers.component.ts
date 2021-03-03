@@ -16,9 +16,18 @@ export class ConsumersComponent implements OnInit {
   }
 
   ngOnInit(): void {
+   this.loadData();
+  }
+  loadData() {
     this.conSerivce.getAll().subscribe(
       (data)=>{this.consumers=data;},
       (err)=>{ this.errMsg=err;}
+    );
+  }
+
+  deleteConsumer(id:number){
+    this.conSerivce.remove(id).subscribe(
+      ()=>{this.loadData();}
     );
   }
 

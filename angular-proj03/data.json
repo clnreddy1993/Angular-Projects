@@ -31,17 +31,30 @@
       "validity": 75
     }
   ],
-  "consumers":[
+  "consumers": [
     {
-      "id":1,
-      "userId":"vamsy",
-      "fullName":"Vamsy Kiran A",
-      "location":"Andhra Pradesh",
-      "accounts":[
+      "id": 1,
+      "fullName": "vamsi kiran",
+      "location": "andhra",
+      "userId": "124",
+      "accounts": [
         {
-          "id":1,
-          "mobileNumber":"9052224753",
-          "planId":101  
+          "id": 1,
+          "mobileNumber": "81899992559",
+          "planId": "102"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "fullName": "ert",
+      "location": "fdd",
+      "userId": "345",
+      "accounts": [
+        {
+          "id": 1,
+          "mobileNumber": "33344455556",
+          "planId": "104"
         }
       ]
     }
