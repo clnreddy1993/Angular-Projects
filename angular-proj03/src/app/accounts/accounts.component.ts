@@ -12,20 +12,32 @@ import { ConsumerService } from '../service/consumer.service';
 export class AccountsComponent implements OnInit {
 
   consumer:Consumer;
+  isDeletable:boolean;
+  isEditing:boolean[];
+  
   constructor(
     private activatedRoute:ActivatedRoute,
-    private consumerService:ConsumerService) { 
+    private consumerService:ConsumerService
+    ) { 
     this.consumer=null;
+    this.isEditing=null;
+    this.isDeletable = false;
   }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(
-      (params) =>{
+      (params) => {
         if(params.id){
-            this.consumerService.getById(params.id).subscribe(
-              (data) => {
-                this.consumer=data;
-            });
+          this.consumerService.getById(params.id).subscribe(
+            (data) => { 
+              this.consumer=data;
+              this.isEditing =  [];
+              this.isDeletable=data.accounts.length>1;
+              for(let i=0;i<data.accounts.length;i++){
+                  this.isEditing[i]=false;
+              }
+            }
+          );
         }
       }
     );
@@ -36,7 +48,54 @@ export class AccountsComponent implements OnInit {
     this.consumer.accounts.push(account);
 
     this.consumerService.update(this.consumer).subscribe(
-      (data)=>{}
+      (data) => {
+        this.isDeletable=data.accounts.length>1;
+        this.isEditing.push(false);
+      }
     );
+  }
+
+  deleteAccount(id:number){
+    if(confirm("Are you sure of delete account#"+id+"?")){
+        let index = this.consumer.accounts.findIndex(a=>a.id==id);
+        if(index>-1){
+          this.consumer.accounts.splice(index,1);  
+          this.consumerService.update(this.consumer).subscribe(
+            (data) =>{
+              this.isDeletable=data.accounts.length>1;
+              this.isEditing.splice(index,1);
+            }
+          );
+        }
+
+       
+    }
+  }
+
+  editAccount(id:number){
+    let index = this.consumer.accounts.findIndex(a=>a.id==id);
+    if(index>-1){
+      this.isEditing[index]=true;
+    }
+  }
+
+  updateAccount(account:Account){
+    let index = this.consumer.accounts.findIndex(a=>a.id==account.id);
+    if(index>-1){
+      this.consumer.accounts[index]=account; 
+      this.consumerService.update(this.consumer).subscribe(
+        (data) =>{
+          this.isEditing[index]=false;
+        }
+      );
+    }
+  }
+
+  cancelEdit(id:number){
+    let index = this.consumer.accounts.findIndex(a=>a.id==id);
+    if(index>-1){
+      this.isEditing[index]=false;
+    }
+
   }
 }

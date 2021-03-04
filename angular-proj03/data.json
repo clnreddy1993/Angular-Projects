@@ -33,28 +33,33 @@
   ],
   "consumers": [
     {
-      "id": 1,
-      "fullName": "vamsi kiran",
-      "location": "andhra",
-      "userId": "124",
+      "id": 101,
+      "fullName": "Vamsy Kiran Aripaka",
+      "location": "Andhra Pradesh",
+      "userId": "Vamsy",
       "accounts": [
         {
           "id": 1,
-          "mobileNumber": "81899992559",
-          "planId": "102"
+          "mobileNumber": "9052224753",
+          "planId": "105"
+        },
+        {
+          "id": 2,
+          "mobileNumber": "9441522518",
+          "planId": "103"
         }
       ]
     },
     {
-      "id": 2,
-      "fullName": "ert",
-      "location": "fdd",
-      "userId": "345",
+      "id": 102,
+      "fullName": "Suseela",
+      "location": "Andhra Pradesh",
+      "userId": "Susy",
       "accounts": [
         {
           "id": 1,
-          "mobileNumber": "33344455556",
-          "planId": "104"
+          "mobileNumber": "9550204753",
+          "planId": "105"
         }
       ]
     }

@@ -1,10 +1,10 @@
 <div class="col-sm-5 mx-auto">
-    <form class="form" [formGroup]="conForm" (ngSubmit)="formSubmitted()">
+    <form class="form" [formGroup]="conForm" (ngSubmit)="formSubmited()">
         <div class="form-group">
             <label class="form-label">
                 Consumer Id:
             </label>
-            <input type="number" formControlName="consumerId" class="form-control" [readonly]="!isNew"/>
+            <input type="number" formControlName="consumerId" class="form-control" [readonly]="!isNew" />
             <div class="alert alert-danger" *ngIf="consumerId.invalid && (consumerId.dirty || consumerId.touched)">
                 <span *ngIf="consumerId.errors.required">This field is mandate</span>
                 <span *ngIf="consumerId.errors.min">Negative Values are not expected</span>
@@ -50,7 +50,7 @@
                 <span *ngIf="mobileNumber.errors.pattern">A ten digit number expected</span>
             </div>
         </div>
-        <div class="form-group"  *ngIf="isNew">
+        <div class="form-group" *ngIf="isNew">
             <label class="form-label">
                 Plan:
             </label>
@@ -64,7 +64,7 @@
         </div>
         <div class="form-group">
             <button class="btn btn-primary btn-block" [disabled]="conForm.invalid">
-               {{isNew ? "Add Consumer" : "Save Consumer"}} 
+                {{isNew?"Add Consumer":"Save Consumer"}}
             </button>
         </div>
     </form>

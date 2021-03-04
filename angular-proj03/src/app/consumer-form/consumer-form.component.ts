@@ -21,19 +21,19 @@ export class ConsumerFormComponent implements OnInit {
   location:FormControl;
   mobileNumber:FormControl;
   planId:FormControl;
-  isNew:boolean;
 
   plans:TariffPlan[];
+
+  isNew:boolean;
 
   constructor(
     private trfService:TariffPlanService,
     private conService:ConsumerService,
     private router :Router,
     private activatedRoute:ActivatedRoute
-
   ) { 
 
-    this.isNew = true;
+    this.isNew=true;
 
     this.consumerId=new FormControl(0,[Validators.required,Validators.min(1)]);
     this.userId=new FormControl('',[Validators.required,Validators.minLength(3)]);
@@ -55,39 +55,36 @@ export class ConsumerFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   this.trfService.getAll().subscribe(
-      (data) =>{
-        this.plans=data;
-      }
+    this.trfService.getAll().subscribe(
+      (data) => {this.plans=data;}
     );
 
     this.activatedRoute.params.subscribe(
-      (params)=>{
+      (params) => {
         if(params.id){
-          this.isNew = false;
+          this.isNew=false;
           this.conService.getById(params.id).subscribe(
-            (c) =>{
-                this.conForm.setValue(
-                  {
-                    consumerId:c.id,
-                    userId:c.userId,
-                    fullName:c.fullName,
-                    location:c.location,
-                    mobileNumber:c.accounts[0].mobileNumber,
-                    planId:c.accounts[0].planId
-                  }
-                )
-          });
+            (c) => {
+              this.conForm.setValue({
+                consumerId:c.id,
+                userId:c.userId,
+                fullName:c.fullName,
+                location:c.location,
+                mobileNumber:c.accounts[0].mobileNumber,
+                planId:c.accounts[0].planId
+              });
+            }
+          );
         }
       }
     );
   }
 
-  formSubmitted(){
+  formSubmited(){
     this.isNew?this.addConsumer():this.updateConsumer();
   }
-  addConsumer(){
 
+  addConsumer(){
     let c : Consumer =  {
       id: this.conForm.value.consumerId, 
       fullName: this.conForm.value.fullName,
@@ -96,33 +93,32 @@ export class ConsumerFormComponent implements OnInit {
       accounts: [{ 
         id:1,
         mobileNumber: this.conForm.value.mobileNumber, 
-        planId: this.conForm.value.planId }]
+        planId:this.conForm.value.planId       
+      }]
     };
 
     this.conService.add(c).subscribe(
-      (data)=>{
+      (data) => {
         this.router.navigateByUrl("/consumers");
       }
     );
-   
+    
   }
 
   updateConsumer(){
     this.conService.getById(this.conForm.value.consumerId).subscribe(
-      (c) =>{
-
-        alert(JSON.stringify(c));
+      (c) => {
+        
         c.userId=this.conForm.value.userId;
         c.fullName=this.conForm.value.fullName;
         c.location=this.conForm.value.location;
+
         this.conService.update(c).subscribe(
-          (data)=>{
-            this.router.navigateByUrl("/consumers");
-          }
+          (data) => {
+             this.router.navigateByUrl("/consumers");
+           }
         );
-
-    });
+      }
+    );
   }
-
-
 }

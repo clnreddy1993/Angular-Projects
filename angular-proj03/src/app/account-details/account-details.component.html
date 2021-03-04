@@ -1,13 +1,20 @@
-
-
 <div class="row border p-2">
     <div class="col-sm-2">
-       account # <strong>{{account.id}}</strong> 
+        account#<strong>{{account.id}}</strong>
     </div>
     <div class="col-sm-3">
-        mobilenumber: <strong>{{account.mobileNumber}}</strong> 
+        mobile: <strong>{{account.mobileNumber}}</strong>
     </div>
-     <div class="col-sm-2">
-       Plan Id: <strong>{{account.planId}}</strong> 
+    <div class="col-sm-2">
+        Plan Id: <strong>{{account.planId}}</strong>
+    </div>
+    <div class="col-sm-2">
+        <button class="btn btn-sm" (click)="edit()" >
+            <i class="fa fa-pencil">Edit</i>
+        </button>
+        <button class="btn btn-sm" (click)="delete()" [disabled]="!deletable">
+                <i class="fa fa-trash">Delete</i>
+        </button>
+        
     </div>
 </div>

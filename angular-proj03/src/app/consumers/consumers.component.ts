@@ -18,7 +18,8 @@ export class ConsumersComponent implements OnInit {
   ngOnInit(): void {
    this.loadData();
   }
-  loadData() {
+
+  loadData(){
     this.conSerivce.getAll().subscribe(
       (data)=>{this.consumers=data;},
       (err)=>{ this.errMsg=err;}
@@ -27,8 +28,7 @@ export class ConsumersComponent implements OnInit {
 
   deleteConsumer(id:number){
     this.conSerivce.remove(id).subscribe(
-      ()=>{this.loadData();}
+      () => {this.loadData();}
     );
   }
-
 }
